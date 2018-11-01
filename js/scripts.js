@@ -32,8 +32,8 @@ function Player (name) {
 }
 
 Player.prototype.clear = function() {
-  this.score = 122;
-  this.tally = 34;
+  this.score = 0;
+  this.tally = 0;
 }
 
 Player.prototype.hold = function() {
@@ -48,8 +48,8 @@ Player.prototype.hold = function() {
 
 Player.prototype.roll = function(value) {
   if (value === 1) {
-    this.tally = 0
-    return false
+    this.tally = 0;
+    return false;
   } else {
     this.tally += value;
     return true;
@@ -60,7 +60,7 @@ Player.prototype.roll = function(value) {
 game = new Game();
 
 function displayRoll (value) {
-  //number or dice pic
+  $("#dice").text(value);
 }
 
 function displayPlayer (selector, player, active) {
@@ -76,9 +76,10 @@ function displayPlayer (selector, player, active) {
 }
 
 function displayWinner (name) {
-  // display currentplay winner
-  // set replay button label
-  //display winnerbox
+  $("#start").text("REPLAY");
+  $("#winner-text").text("THE WINNER IS");
+  $("#winner-name").text(name);
+  $("#winner-board").show();
 }
 
 function displayStart () {
@@ -88,12 +89,18 @@ function displayStart () {
   $("#winner-text").text("press to play");
   $("#winner-board").show();
 }
+function getPlayerSelector (player) {
+  if (player === game.player0){
+    return "#player0";
+  }else {
+    return "#player1";
+  }
+}
 
 $(function() {
   displayStart();
 
   $("#start").click(function() {
-    console.log("start");
     game.start();
     displayPlayer("#player0", game.player0, false);
     displayPlayer("#player1", game.player1, false);
@@ -104,25 +111,31 @@ $(function() {
 
   $("#roll").click(function() {
     roll = game.rollDice();
-    // display roll
-    // display displayInactivePlayer(currentPlayer)
+    displayRoll(roll);
 
     if(game.currentPlayer.roll(roll)) {
-      //show hold button
+      var selector = getPlayerSelector(game.currentPlayer);
+      displayPlayer(selector, game.currentPlayer, true);
+      $("#hold").show();
     } else {
+      var selector = getPlayerSelector(game.currentPlayer);
+      displayPlayer(selector, game.currentPlayer, false);
       game.switchPlayer();
-      // display displayActivePlayer(currentPlayer)
+      var selector = getPlayerSelector(game.currentPlayer);
+      displayPlayer(selector, game.currentPlayer, true);
     }
   });
 
   $("#hold").click(function() {
-    //hide hold button
+      $("#hold").hide();
     if(game.currentPlayer.hold()) {
-      // display winner board with currentPlayer
+      displayWinner(game.currentPlayer.name);
     } else {
-      // display displayInactivePlayer(currentPlayer)
+      var selector = getPlayerSelector(game.currentPlayer);
+      displayPlayer(selector, game.currentPlayer, false);
       game.switchPlayer();
-      // display displayActivePlayer(currentPlayer)
+      var selector = getPlayerSelector(game.currentPlayer);
+      displayPlayer(selector, game.currentPlayer, true);
     }
   });
 });
