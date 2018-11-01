@@ -17,8 +17,23 @@ For any issues, email us at g.nightster11@gmail.com or philrmass@gmail.com
 
 ## Test Specs
 
-*
-* 
+* create player constructor
+* create hold method
+* create roll method
+* create clear method
+* create game constructor
+* create start method
+* create playerRoll method
+* create playerHold method
+* create html and ui
+* crate displayRoll function
+* create displayActivePlayer function
+* create displayInactivePlayer function
+* create displayWinner function
+* create displayStart function
+* create start click function
+* create roll click function
+* create hold click function
 
 ## Legal
 
