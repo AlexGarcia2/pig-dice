@@ -32,8 +32,8 @@ function Player (name) {
 }
 
 Player.prototype.clear = function() {
-  this.score = 0;
-  this.tally = 0;
+  this.score = 122;
+  this.tally = 34;
 }
 
 Player.prototype.hold = function() {
@@ -63,16 +63,16 @@ function displayRoll (value) {
   //number or dice pic
 }
 
-function displayActivePlayer (element, player) {
-  //show tally
-  // show score
-  // display box for activeplayer
-}
-
-function displayInactivePlayer (element, player) {
-  //show tally
-    // show score
-    // make play look inactive
+function displayPlayer (selector, player, active) {
+  var tallySelector = selector + " .tally";
+  $(tallySelector).text(player.tally);
+  var scoreSelector = selector + " .score";
+  $(scoreSelector).text(player.score);
+  if(active) {
+    $(selector).removeClass("inactive");
+  } else {
+    $(selector).addClass("inactive");
+  }
 }
 
 function displayWinner (name) {
@@ -82,20 +82,24 @@ function displayWinner (name) {
 }
 
 function displayStart () {
-// display both player displayInactivePlayer
-// set start button label
-// set winner box text to start Game
-// display winner box
-
+  displayPlayer("#player0", game.player0, false);
+  displayPlayer("#player1", game.player1, false);
+  $("#start").text("START");
+  $("#winner-text").text("press to play");
+  $("#winner-board").show();
 }
 
 $(function() {
+  displayStart();
 
   $("#start").click(function() {
+    console.log("start");
     game.start();
-    // display displayInactivePlayer (both)
-    // display displayActivePlayer(currentPlayer)
-    //hide hold button
+    displayPlayer("#player0", game.player0, false);
+    displayPlayer("#player1", game.player1, false);
+    displayPlayer("#player0", game.player0, true);
+    $("#hold").hide();
+    $("#winner-board").hide();
   });
 
   $("#roll").click(function() {
