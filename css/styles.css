@@ -1,18 +1,70 @@
 body {
   position: relative;
 }
+input{
+  margin: 15px;
+  display: block;
+}
+body{
+  background-image: url("../img/background.jpeg");
 
+}
+#game-board {
+  justify-content: center;
+  display: flex;
+}
+#player0{
+  background-color: #EEE;
+  background-size: 200px;
+  /* background-color: #fc8; */
+}
+#dice-box {
+  height: 200px;
+}
+#dice-buttons{
+  width: 20%;
+  height: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 50px;
+  background-image: url("../img/bacon.png");
+}
+#dice {
+  color: #fff;
+  text-shadow: 4px 4px #000;
+  font-weight: bold;
+}
+#player1{
+  background-color: #EEE;
+  background-size: 200px;
+}
 #winner-board{
   position: absolute;
   width: 40%;
   height: 300px;
+  top: 100px;
   left: 30%;
   margin: 50px;
   background-color: rgba(128, 192, 255, 0.75);
   text-align: center;
   font-size: 70px;
 }
-
-.inactive {
-  color: #aaa;
+.player {
+  box-sizing: border-box;
+  width: 30%;
+  font-size: 50px;
+  padding: 50px;
+  border: 5px solid #ff0;
+}
+.player label {
+  color: #444;
+}
+.player p {
+  color: #444;
+}
+.player.inactive {
+  border: none;
+  color: #ccc;
 }

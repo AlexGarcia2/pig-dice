@@ -11,7 +11,7 @@
   <body>
     <h1>Pig Dice</h1>
     <div id="game-board">
-      <div id="player0">
+      <div id="player0" class="player">
         <p>Player 1</p>
         <div class="tally-box">
           <label>Tally</label>
@@ -22,28 +22,29 @@
           <span class="score">0</span>
         </div>
       </div>
-     <div id="dice-buttons">
-       <div id="dice-box">
-         <span id="dice"></span>
-       </div>
-       <input id="roll" type="button" value="Roll">
-       <input id="hold" type="button" value="Hold">
-     </div>
-     <div id="player1">
-       <p>Player 2</p>
-       <div class="tally-box">
-         <label>Tally</label>
-         <span class="tally">0</span>
-       </div>
-       <div class="score-box">
-         <label>Score</label>
-         <span class="score">0</span>
-       </div>
-     </div>
+      <div id="dice-buttons">
+        <div id="dice-box">
+          <span id="dice"></span>
+        </div>
+        <input id="roll" type="button" value="Roll">
+        <input id="hold" type="button" value="Hold">
+      </div>
+      <div id="player1" class="player">
+        <p>Player 2</p>
+        <div class="tally-box">
+          <label>Tally</label>
+          <span class="tally">0</span>
+        </div>
+        <div class="score-box">
+          <label>Score</label>
+          <span class="score">0</span>
+        </div>
+      </div>
+    </div>
     <div id="winner-board">
       <p id="winner-text"></p>
       <p id="winner-name"></p>
       <button id="start"></button>
     </div>
   </body>
-</html>
+  </html>
